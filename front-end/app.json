@@ -1,11 +1,15 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/upload/upload",
+    "pages/calculate/calculate",
+    "pages/payment/payment",
+    "pages/status/status"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "我的小程序",
+    "navigationBarTitleText": "智能打印服务",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",

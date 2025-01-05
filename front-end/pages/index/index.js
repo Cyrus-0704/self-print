@@ -10,5 +10,11 @@ Page({
   },
   onShow() {
     // 页面显示时执行
+  },
+  // 跳转到打印服务页面
+  navigateToPrint() {
+    wx.navigateTo({
+      url: '/pages/upload/upload'
+    });
   }
 }) 

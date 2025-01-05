@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="header">
+    <text class="title">文件上传</text>
+    <text class="subtitle">支持格式：DOC、PDF、PNG、JPG等</text>
+  </view>
+
+  <view class="upload-area">
+    <button class="upload-btn" bindtap="chooseFile" disabled="{{uploading}}">
+      选择文件
+    </button>
+  </view>
+
+  <view class="file-list" wx:if="{{fileList.length > 0}}">
+    <view class="file-item" wx:for="{{fileList}}" wx:key="path">
+      <view class="file-info">
+        <view class="file-main">
+          <text class="file-name">{{item.name}}</text>
+          <text class="file-size">{{item.size}}</text>
+        </view>
+        <view class="file-status">
+          <text class="status-text {{item.status}}" wx:if="{{item.status !== 'waiting'}}">
+            {{item.status === 'success' ? '完成' : 
+              item.status === 'fail' ? '失败' : 
+              item.status === 'uploading' ? '上传中' : ''}}
+          </text>
+          <view class="delete-btn" bindtap="deleteFile" data-index="{{index}}"
+                wx:if="{{!uploading && item.status !== 'uploading'}}">
+            ×
+          </view>
+        </view>
+      </view>
+      <view class="progress-bar" wx:if="{{currentUploadIndex === index && item.status === 'uploading'}}">
+        <progress percent="{{uploadProgress}}" stroke-width="4" activeColor="#07c160"/>
+      </view>
+    </view>
+  </view>
+
+  <view class="action-area">
+    <button class="submit-btn" bindtap="uploadFiles" 
+            disabled="{{fileList.length === 0 || uploading}}"
+            loading="{{uploading}}">
+      {{uploading ? '上传中...' : '开始上传'}}
+    </button>
+  </view>
+</view> 
