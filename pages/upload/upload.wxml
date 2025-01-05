@@ -1,0 +1,65 @@
+<view class="container">
+  <!-- 文件上传区域 -->
+  <view class="upload-area" bindtap="chooseFile" wx:if="{{fileList.length === 0}}">
+    <image class="upload-icon" src="/images/icons/upload.png" mode="aspectFit"></image>
+    <view class="upload-text">点击选择文件</view>
+    <view class="upload-tips">支持PDF、Word文档和图片格式</view>
+  </view>
+
+  <!-- 文件列表 -->
+  <view class="file-list" wx:if="{{fileList.length > 0}}">
+    <view class="file-item">
+      <view class="file-info">
+        <image class="file-icon" src="{{fileList[0].icon}}" mode="aspectFit"></image>
+        <view class="file-detail">
+          <view class="file-name">{{fileList[0].name}}</view>
+          <view class="file-meta">
+            <text class="file-type">{{fileList[0].typeName}}</text>
+            <text class="file-size">{{fileList[0].size}}KB</text>
+          </view>
+        </view>
+      </view>
+      <view class="file-actions">
+        <view class="action-btn preview" bindtap="previewFile" data-file="{{fileList[0]}}">
+          <image src="/images/icons/preview.png" mode="aspectFit"></image>
+        </view>
+        <view class="action-btn delete" bindtap="deleteFile">
+          <image src="/images/icons/delete.png" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 支持的文件类型说明 -->
+  <view class="support-types">
+    <view class="type-title">支持的文件类型</view>
+    <view class="type-list">
+      <view class="type-item">
+        <image src="/images/icons/doc.png" mode="aspectFit"></image>
+        <text>PDF文档</text>
+      </view>
+      <view class="type-item">
+        <image src="/images/icons/doc.png" mode="aspectFit"></image>
+        <text>Word文档</text>
+      </view>
+      <view class="type-item">
+        <image src="/images/icons/image.png" mode="aspectFit"></image>
+        <text>图片文件</text>
+      </view>
+    </view>
+    <view class="type-tips">
+      <text class="tip">· 单个文件大小不超过20MB</text>
+      <text class="tip">· 支持jpg、png、pdf、doc、docx格式</text>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="footer-btn">
+    <button class="btn btn-primary {{fileList.length === 0 || uploading ? 'disabled' : ''}}" 
+      bindtap="startPrint" 
+      disabled="{{fileList.length === 0 || uploading}}"
+    >
+      {{uploading ? '正在处理...' : '开始打印'}}
+    </button>
+  </view>
+</view> 

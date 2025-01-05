@@ -1,0 +1,133 @@
+/* 页面容器 */
+.container {
+  padding: 20rpx;
+  background: var(--bg-color);
+  min-height: 100vh;
+}
+
+.order-info {
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.order-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.order-details {
+  padding: 10rpx 0;
+}
+
+.info-item {
+  display: flex;
+  margin-bottom: 15rpx;
+  font-size: 28rpx;
+  line-height: 1.5;
+}
+
+.info-item .label {
+  color: #666;
+  width: 160rpx;
+  flex-shrink: 0;
+}
+
+.info-item .value {
+  color: #333;
+  flex: 1;
+}
+
+.info-item .price {
+  color: #f60;
+  font-weight: bold;
+}
+
+.status-section {
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.status-header {
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.status-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.status-message {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.progress-box {
+  padding: 0 20rpx;
+  margin: 30rpx 0;
+}
+
+.progress-text {
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
+  display: block;
+  margin-top: 10rpx;
+}
+
+.action-buttons {
+  margin-top: 40rpx;
+}
+
+.btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+
+.btn.primary {
+  background: #1890ff;
+  color: #fff;
+}
+
+.btn.retry {
+  background: #fff;
+  color: #1890ff;
+  border: 2rpx solid #1890ff;
+}
+
+.tips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30rpx;
+  background: #f6ffed;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+}
+
+.tips.error {
+  background: #fff2f0;
+}
+
+.tips icon {
+  margin-right: 10rpx;
+}
+
+.tips text {
+  font-size: 28rpx;
+  color: #333;
+}

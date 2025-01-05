@@ -1,0 +1,53 @@
+<view class="container">
+  <!-- Banner轮播图 -->
+  <swiper class="banner" indicator-dots autoplay circular>
+    <swiper-item wx:for="{{bannerList}}" wx:key="id">
+      <image src="{{item.imageUrl}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 服务列表 -->
+  <view class="section service-section">
+    <view class="section-title">打印服务</view>
+    <view class="service-list">
+      <view class="service-item" wx:for="{{serviceList}}" wx:key="id" bindtap="navigateToPrint">
+        <image class="service-icon" src="{{item.icon}}" mode="aspectFit"></image>
+        <view class="service-info">
+          <view class="service-title">{{item.title}}</view>
+          <view class="service-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 价格说明 -->
+  <view class="section price-section">
+    <view class="section-title">价格说明</view>
+    <view class="price-list">
+      <view class="price-item" wx:for="{{priceList}}" wx:key="title">
+        <text class="price-title">{{item.title}}</text>
+        <text class="price-value">{{item.price}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 联系信息 -->
+  <view class="section contact-section">
+    <view class="section-title">联系我们</view>
+    <view class="contact-info">
+      <view class="info-item" bindtap="makePhoneCall">
+        <image class="info-icon" src="/images/icons/phone.png" mode="aspectFit"></image>
+        <text class="info-text">{{contactPhone}}</text>
+      </view>
+      <view class="info-item">
+        <image class="info-icon" src="/images/icons/time.png" mode="aspectFit"></image>
+        <text class="info-text">{{businessHours}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快速打印按钮 -->
+  <view class="quick-print">
+    <button class="btn-print" bindtap="navigateToPrint">开始打印</button>
+  </view>
+</view> 

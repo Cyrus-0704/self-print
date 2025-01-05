@@ -1,0 +1,63 @@
+<!-- 打印状态页面 -->
+<view class="container">
+  <!-- 订单信息 -->
+  <view class="order-info">
+    <view class="order-title">订单信息</view>
+    <view class="order-details">
+      <view class="info-item">
+        <text class="label">文件名称：</text>
+        <text class="value">{{orderInfo.fileInfo.name}}</text>
+      </view>
+      <view class="info-item">
+        <text class="label">打印份数：</text>
+        <text class="value">{{orderInfo.printOptions.copies}}份</text>
+      </view>
+      <view class="info-item">
+        <text class="label">打印选项：</text>
+        <text class="value">
+          {{orderInfo.printOptions.color ? '彩色' : '黑白'}}，
+          {{orderInfo.printOptions.doubleSided ? '双面' : '单面'}}，
+          {{orderInfo.printOptions.pageSize}}
+        </text>
+      </view>
+      <view class="info-item">
+        <text class="label">总价：</text>
+        <text class="value price">¥{{orderInfo.priceInfo.totalPrice}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 打印状态 -->
+  <view class="status-section">
+    <view class="status-header">
+      <text class="status-text">{{statusMap[printStatus.status]}}</text>
+      <text class="status-message">{{printStatus.message}}</text>
+    </view>
+
+    <!-- 进度条 -->
+    <view class="progress-box">
+      <progress percent="{{printStatus.progress}}" stroke-width="3" activeColor="#1890ff" backgroundColor="#f5f5f5" />
+      <text class="progress-text">{{printStatus.progress}}%</text>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="action-buttons">
+      <block wx:if="{{printStatus.status === 'failed'}}">
+        <button class="btn retry" bindtap="retryPrint">重新打印</button>
+      </block>
+      <block wx:if="{{printStatus.status === 'completed'}}">
+        <button class="btn primary" bindtap="goHome">返回首页</button>
+      </block>
+    </view>
+  </view>
+
+  <!-- 提示信息 -->
+  <view class="tips" wx:if="{{printStatus.status === 'completed'}}">
+    <icon class="icon" type="success" size="24"></icon>
+    <text class="text">打印完成，请到打印点取件</text>
+  </view>
+  <view class="tips error" wx:if="{{printStatus.status === 'failed'}}">
+    <icon class="icon" type="warn" size="24"></icon>
+    <text class="text">打印失败，请重试</text>
+  </view>
+</view> 

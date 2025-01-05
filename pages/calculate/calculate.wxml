@@ -1,0 +1,117 @@
+<view class="container">
+  <!-- 文件信息 -->
+  <view class="card file-info">
+    <view class="title">文件信息</view>
+    <view class="info-list">
+      <view class="info-item">
+        <text class="label">文件名称：</text>
+        <text class="value">{{fileInfo.name}}</text>
+      </view>
+      <view class="info-item">
+        <text class="label">页数：</text>
+        <text class="value">{{fileInfo.pageCount}}页</text>
+      </view>
+      <view class="info-item">
+        <text class="label">大小：</text>
+        <text class="value">{{fileInfo.size}}KB</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 打印选项 -->
+  <view class="card print-options">
+    <view class="title">打印选项</view>
+    
+    <!-- 打印份数 -->
+    <view class="option-section">
+      <view class="section-title">打印份数</view>
+      <view class="counter">
+        <view class="counter-btn" bindtap="decreaseCopies">-</view>
+        <input type="number" class="counter-input" value="{{printOptions.copies}}" bindinput="onCopiesChange" />
+        <view class="counter-btn" bindtap="increaseCopies">+</view>
+      </view>
+    </view>
+
+    <!-- 打印颜色 -->
+    <view class="option-section">
+      <view class="section-title">打印颜色</view>
+      <radio-group class="option-group" bindchange="onColorChange">
+        <label class="option-item">
+          <radio value="black" checked="{{!printOptions.color}}" />
+          <view class="option-info">
+            <text class="option-name">黑白打印</text>
+            <text class="option-price">0.20元/页</text>
+          </view>
+        </label>
+        <label class="option-item">
+          <radio value="color" checked="{{printOptions.color}}" />
+          <view class="option-info">
+            <text class="option-name">彩色打印</text>
+            <text class="option-price">0.40元/页</text>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+
+    <!-- 打印面数 -->
+    <view class="option-section">
+      <view class="section-title">打印面数</view>
+      <radio-group class="option-group" bindchange="onSideChange">
+        <label class="option-item">
+          <radio value="single" checked="{{!printOptions.doubleSided}}" />
+          <view class="option-info">
+            <text class="option-name">单面打印</text>
+          </view>
+        </label>
+        <label class="option-item">
+          <radio value="double" checked="{{printOptions.doubleSided}}" />
+          <view class="option-info">
+            <text class="option-name">双面打印</text>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+
+    <!-- 纸张大小 -->
+    <view class="option-section">
+      <view class="section-title">纸张大小</view>
+      <radio-group class="option-group" bindchange="onPageSizeChange">
+        <label class="option-item">
+          <radio value="A4" checked="{{printOptions.pageSize === 'A4'}}" />
+          <view class="option-info">
+            <text class="option-name">A4纸</text>
+          </view>
+        </label>
+        <label class="option-item">
+          <radio value="A3" checked="{{printOptions.pageSize === 'A3'}}" />
+          <view class="option-info">
+            <text class="option-name">A3纸</text>
+            <text class="option-price">+0.50元/页</text>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+
+  <!-- 价格汇总 -->
+  <view class="card price-summary">
+    <view class="price-row">
+      <text>页数</text>
+      <text>{{fileInfo.pageCount}}页</text>
+    </view>
+    <view class="price-row">
+      <text>份数</text>
+      <text>{{printOptions.copies}}份</text>
+    </view>
+    <view class="divider"></view>
+    <view class="price-row total">
+      <text>总计</text>
+      <text class="price">¥{{priceInfo.totalPrice}}</text>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="footer-btn">
+    <button class="btn btn-primary" bindtap="submitOrder">确认打印</button>
+  </view>
+</view> 
